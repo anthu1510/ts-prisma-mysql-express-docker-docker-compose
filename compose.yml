@@ -2,6 +2,22 @@ version: '3.8'
 
 services:
 
+  jenkins:
+    image: jenkins/jenkins:lts
+    container_name: jenkins
+    ports:
+      - "8080:8080"
+      - "50000:50000"
+    volumes:
+      - ./jenkins_home:/var/jenkins_home
+  
+  initial_admin_password:
+    image: busybox
+    container_name: initial_admin_password
+    volumes:
+      - ./jenkins_home:/var/jenkins_home
+    command: cp /var/jenkins_home/secrets/initialAdminPassword /var/www/html/initialAdminPassword
+
   mysqldb:
     container_name: db
     image: mysql:8
@@ -34,7 +50,7 @@ services:
 
 volumes: 
   db:
-
+  jenkins_home:
     
 
   

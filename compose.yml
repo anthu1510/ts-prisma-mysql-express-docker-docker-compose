@@ -11,12 +11,12 @@ services:
     volumes:
       - ./jenkins_home:/var/jenkins_home
   
-  initial_admin_password:
-    image: busybox
-    container_name: initial_admin_password
-    volumes:
-      - ./jenkins_home:/var/jenkins_home
-    command: cp /var/jenkins_home/secrets/initialAdminPassword /var/www/html/initialAdminPassword
+  # initial_admin_password:
+  #   image: busybox
+  #   container_name: initial_admin_password
+  #   volumes:
+  #     - ./jenkins_home:/var/jenkins_home
+  #   command: cp /var/jenkins_home/secrets/initialAdminPassword /var/www/html/initialAdminPassword
 
   mysqldb:
     container_name: db
